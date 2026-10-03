@@ -1,0 +1,80 @@
+/* ============ 全局 CSS 变量：统一维护颜色、尺寸，方便换肤 ============ */
+:root {
+  --sidebar-width: 210px; /* 侧边栏展开宽度 */
+  --sidebar-collapsed-width: 64px; /* 侧边栏折叠宽度 */
+  --sidebar-bg: #001529; /* 侧边栏背景色（深色） */
+  --sidebar-text: #a6adb4; /* 侧边栏文字颜色 */
+  --sidebar-active: #409eff; /* 菜单激活高亮色 */
+  --header-height: 50px; /* 顶部导航高度 */
+  --tags-height: 40px; /* 页签栏高度 */
+  --main-bg: #f5f7fa; /* 主内容区背景色 */
+}
+
+/* ============ 基础重置 ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  color: #303133;
+  background-color: var(--main-bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============ 常用工具类 ============ */
+/* 页面通用卡片容器：每个业务页面最外层套一个，保持间距统一 */
+.app-container {
+  padding: 16px;
+}
+
+/* 页面切换过渡动画（在 layout/AppMain.vue 中使用） */
+.fade-transform-enter-active,
+.fade-transform-leave-active {
+  transition: all 0.3s;
+}
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* ============ 深色侧边栏的菜单样式覆盖 ============ */
+.sidebar .el-menu {
+  border-right: none;
+  background-color: var(--sidebar-bg);
+}
+.sidebar .el-menu-item,
+.sidebar .el-sub-menu__title {
+  color: var(--sidebar-text);
+  background-color: var(--sidebar-bg);
+}
+.sidebar .el-menu-item:hover,
+.sidebar .el-sub-menu__title:hover {
+  background-color: #000c17;
+  color: #fff;
+}
+.sidebar .el-menu-item.is-active {
+  color: #fff;
+  background-color: var(--sidebar-active);
+}
+/* 展开的子菜单背景更深一点，突出层级 */
+.sidebar .el-sub-menu .el-menu {
+  background-color: #000c17;
+}
+.sidebar .el-sub-menu .el-menu-item {
+  background-color: #000c17;
+}
